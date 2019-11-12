@@ -55,6 +55,10 @@ def acertarPalavra(palavra):
                 print("Parabéns Você Venceu o Jogo Acertando a Palavra: ", palavra)
                 exit()
             else:
+                print("Palavra: ")
+                for i in range(len(vetorVerdadeiro)):
+                    print(vetorVerdadeiro[i], end=" ")
+                print("")
                 vida -= 1
                 print("Que pena Você Errou a Palavra a Ser Advinhada")
                 print("Agora Você Tem um Total de:", vida, "Vidas")
