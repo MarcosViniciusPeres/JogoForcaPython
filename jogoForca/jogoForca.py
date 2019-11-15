@@ -13,7 +13,12 @@ def escolherConteudo():
     global auxiliarEscolher
     if auxiliarEscolher == 0:
         auxiliarEscolher += 1
-        variavelConteudo = int(input("Digite [1] para escolher Animal ou Digite [2] para escolher Fruta: "))
+
+        try:
+            variavelConteudo = int(input("Digite [1] para escolher Animal ou Digite [2] para escolher Fruta: "))
+        except ValueError:
+            print("Por favor!!! Digite um valor Numérico Válido")
+            return
 
         if variavelConteudo == 1 or variavelConteudo == 2:
             if variavelConteudo == 1:
@@ -48,7 +53,9 @@ def acertarPalavra(palavra):
     global vida
     if vida != 0:
         if palavra:
+
             palavraDigitada = input("Digite a Palavra a Ser Advinhada Sem Acentuação: ")
+
             palavraDigitada = palavraDigitada.lower()
 
             if palavraDigitada == palavra:
