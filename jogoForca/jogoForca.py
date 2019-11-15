@@ -3,17 +3,17 @@ from random import randint
 vida = 5
 auxiliar = 0
 vetorVerdadeiro = []
-vetorAuxiliar = []
+vetorAuxiliar = [] #Auxiliar que irá controlar, para que o array comece com _ _ _ _ _ _
 conteudo = []
 palavraSorteada = ""
-auxiliarEscolher = 0
+auxiliarEscolher = 0 #Auxiliar, para que a pessoa não escolha a opção 1, varias vezes
 
-
+#Função para perguntar com qual conteudo se queira jogar.
 def escolherConteudo():
     global auxiliarEscolher
     if auxiliarEscolher == 0:
         auxiliarEscolher += 1
-
+        #Try catch para o caso da pessoa apertar uma letra ao invés de numero.
         try:
             variavelConteudo = int(input("Digite [1] para escolher Animal ou Digite [2] para escolher Fruta: "))
         except ValueError:
@@ -35,10 +35,11 @@ def escolherConteudo():
     else:
         print("Voce ja Escolheu um conteudo")
         return
-
+#Função para sortear a Palavra aleatoriamente
 def sortearPalavra(conteudo):
     if conteudo:
         numeroRandomico = randint(0, len(conteudo))
+        #Vai escolher a palavra de acordo com o tamanho do vetor de animal ou fruta escolhido.
         palavraEscolhida = conteudo[numeroRandomico]
 
         print("Sua Palavra Foi Sorteada com Sucesso. Bora Jogar ?")
@@ -48,7 +49,7 @@ def sortearPalavra(conteudo):
         return
 
 
-
+#Função que vai verificar se a pessoa vai acertar a palavra inteira
 def acertarPalavra(palavra):
     global vida
     if vida != 0:
@@ -75,7 +76,7 @@ def acertarPalavra(palavra):
         print("Que pena suas Vidas Acabaram!! Recomece outro Jogo.")
         exit()
 
-
+#Função que vai verificar se existe uma letra que bate com a palavra escolhida.
 def acertarLetra(palavra):
     global auxiliar
     global vida
@@ -89,6 +90,7 @@ def acertarLetra(palavra):
 
             vetorChar = list(palavra)
 
+            #Inicia o vetor com os _ _ _ _ _ _
             if auxiliar < len(vetorChar):
                for i in range(0, len(vetorChar)):
                    vetorVerdadeiro.append("_")
@@ -117,6 +119,7 @@ def acertarLetra(palavra):
                 if letraChar != vetorChar[i]:
                     vetorAuxiliar.append(letraChar)
 
+            #Transforma o vetor por fim em String para verificar se a pessoa ganhou o jogo.
             str = ''.join(vetorVerdadeiro)
 
             if palavra == str:
